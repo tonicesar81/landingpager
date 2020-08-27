@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
     {!! Form::label('logo', 'Logo') !!}
-    {!! Form::file('logo', (!is_null($prefs)) ? $prefs->logo : null, ['class' => 'form-control-file']) !!}
+    {!! Form::file('logo', ['class' => 'form-control-file']) !!}
     </div>
     <div class="form-group">
     {!! Form::label('whatsapp', 'Whatsapp') !!}
