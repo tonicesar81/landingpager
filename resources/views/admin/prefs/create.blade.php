@@ -10,7 +10,7 @@
     <div class="form-group">
     @if(!is_null($prefs))
         @if($prefs->logo != '')
-            <img src="{{ url('storage/'.$features->image) }}" style="width:200px;height:auto;" class="img-thumbnail" />
+            <img src="{{ url('storage/'.$prefs->logo) }}" style="width:200px;height:auto;" class="img-thumbnail" />
         @else
             <img src="{{ asset('img/placeholder-16-9.jpg') }}" style="width:200px;height:auto;" class="img-thumbnail" />
         @endif
