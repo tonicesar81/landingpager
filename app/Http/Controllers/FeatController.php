@@ -143,12 +143,12 @@ class FeatController extends Controller
             $feat->content = $request->input('content');
         }
         if($request->has('enabled')){
-            $form->enabled = 1;
+            $feat->enabled = 1;
         }else{
-            $form->enabled = 0;
+            $feat->enabled = 0;
         }
         if($request->has('order')){
-            $form->order = $request->input('order');
+            $feat->order = $request->input('order');
         }
 
         $feat->save();

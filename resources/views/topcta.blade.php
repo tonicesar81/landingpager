@@ -15,7 +15,11 @@
                 <div class="row">
                     <div class="col-sm-4 text-center">
                         @if($page->logo == 1)
-                        <img src="{{asset('img/logo.png')}}" class="" style="width:150px;height:auto" alt="">
+                            @if($prefs->logo != '')
+                                <img src="{{asset('img/logo-sr.png')}}" class="" style="width:150px;height:auto" alt="">
+                            @else
+                                <h2 class="text-primary">{!! $prefs->sitename !!}</h2>
+                            @endif    
                         @endif
                     </div>
                     <div class="col-sm-4">
@@ -23,9 +27,8 @@
                     </div>
                     <div class="col-sm-4 text-center py-5">
                         @if($page->whats == 1)
-                        <button type="button" style="vertical-align: middle" class="btn btn-success">
-                            Clique aqui para falar via Whatsapp
-                        </button>
+                        <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={!! $prefs->whatsapp !!}" target="_blank" role="button">Clique aqui para falar via Whatsapp</a>
+                        
                         @endif
                     </div>
                 </div>

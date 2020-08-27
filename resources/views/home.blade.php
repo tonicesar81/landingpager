@@ -10,6 +10,52 @@
                 <div class="card-body">
                     @foreach($modules as $mod)
                         @switch($mod->module)
+                            @case('top')
+                                {!! Form::open(['action' => ['TopController@update', $mod->id], 'method' => 'put', 'files' => true]) !!}
+                                <div class="form-row {!! ($mod->enabled != 1) ? 'bg-light' : '' !!} border border-dark p-1 my-3">
+                                    <div class="form-group col-sm-12 bg-info">
+                                        <h3>Top</h3>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        {!! Form::label('enabled', 'Ativo') !!}
+                                        {!! Form::checkbox('enabled', '1', ($mod->enabled == 1) ? true : false) !!}
+                                    </div>    
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('logo', 'Mostrar logo?') !!}
+                                        {!! Form::checkbox('logo', '1', ($mod->logo == 1) ? true : false) !!}
+                                        {!! Form::label('whats', 'Mostrar Whatsapp?') !!}
+                                        {!! Form::checkbox('whats', '1', ($mod->whats == 1) ? true : false) !!}  
+                                        {!! Form::label('sticked', 'Topo Fixo?') !!}
+                                        {!! Form::checkbox('sticked', '1', ($mod->sticked == 1) ? true : false) !!}                                     
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('bg_color', 'Cor de fundo') !!}
+                                        {!! Form::color('bg_color', $mod->bg_color, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('bg_image', 'Imagem de fundo') !!}
+                                        {!! Form::file('bg_image', ['class' => 'form-control-file']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-10">
+                                        {!! Form::label('content', 'Texto') !!}
+                                        {!! Form::textarea('content', $mod->content, ['class' => 'summernote']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('cta_text', 'Texto do Botão Whatsapp') !!}
+                                        {!! Form::text('cta_text', $mod->bt_whats, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('order', 'Ordem') !!}
+                                        {!! Form::number('order', $mod->order, ['class' => 'form-control']) !!}                                       
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        {!! Form::checkbox('delete', '1', false) !!}
+                                        {!! Form::label('delete', 'Apagar módulo (Irreversível)') !!}
+                                        {!! Form::submit('Salvar') !!}
+                                    </div>
+                                </div>                                
+                                {!! Form::close() !!}
+                            @break
                             @case('cta')
                                 {!! Form::open(['action' => ['TopCtaController@update', $mod->id], 'method' => 'put', 'files' => true]) !!}
                                 <div class="form-row {!! ($mod->enabled != 1) ? 'bg-light' : '' !!} border border-dark p-1 my-3">
@@ -66,6 +112,75 @@
                                         {!! Form::number('order', $mod->order, ['class' => 'form-control']) !!}                                       
                                     </div>
                                     <div class="form-group col-sm-12">
+                                        {!! Form::checkbox('delete', '1', false) !!}
+                                        {!! Form::label('delete', 'Apagar módulo (Irreversível)') !!}
+                                        {!! Form::submit('Salvar') !!}
+                                    </div>
+                                </div>                                
+                                {!! Form::close() !!}
+                            @break
+                            @case('topform')
+                                {!! Form::open(['action' => ['TopFormsController@update', $mod->id], 'method' => 'put', 'files' => true]) !!}
+                                <div class="form-row {!! ($mod->enabled != 1) ? 'bg-light' : '' !!} border border-dark p-1 my-3">
+                                    <div class="form-group col-sm-12 bg-info">
+                                        <h3>Top - Form</h3>
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        {!! Form::label('enabled', 'Ativo') !!}
+                                        {!! Form::checkbox('enabled', '1', ($mod->enabled == 1) ? true : false) !!}
+                                    </div>    
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('logo', 'Mostrar logo?') !!}
+                                        {!! Form::checkbox('logo', '1', ($mod->logo == 1) ? true : false) !!}
+                                        {!! Form::label('whats', 'Mostrar Whatsapp?') !!}
+                                        {!! Form::checkbox('whats', '1', ($mod->whats == 1) ? true : false) !!}                                       
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('anchor', 'Âncora') !!}
+                                        {!! Form::text('anchor', $mod->anchor, ['class' => 'form-control']) !!}                                     
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('bg_color', 'Cor de fundo') !!}
+                                        {!! Form::color('bg_color', $mod->bg_color, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        <img src="{{ url('storage/'.$mod->bg_image) }}" style="width:200px;height:auto;" class="img-thumbnail" />
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('bg_image', 'Imagem de fundo') !!}
+                                        {!! Form::file('bg_image', ['class' => 'form-control-file']) !!}
+                                        <div class="form-group form-check">
+                                        {!! Form::label('fixed', 'Imagem fixa') !!}
+                                        {!! Form::checkbox('fixed', '1', ($mod->fixed == 1) ? true : false) !!}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-10">
+                                        {!! Form::label('content', 'Texto') !!}
+                                        {!! Form::textarea('content', $mod->content, ['class' => 'summernote']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('email', 'Email de destino') !!}
+                                        {!! Form::text('email', $mod->email, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('btn_class', 'Classe do botão') !!}
+                                        {!! Form::text('btn_class', $mod->btn_class, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-10">
+                                        {!! Form::label('form_title', 'Título do form') !!}
+                                        {!! Form::textarea('form_title', $mod->form_title, ['class' => 'summernote']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        {!! Form::label('form_color', 'Cor do form') !!}
+                                        {!! Form::color('form_color', $mod->form_color, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        {!! Form::label('order', 'Ordem') !!}
+                                        {!! Form::number('order', $mod->order, ['class' => 'form-control']) !!}                                       
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        {!! Form::checkbox('delete', '1', false) !!}
+                                        {!! Form::label('delete', 'Apagar módulo (Irreversível)') !!}
                                         {!! Form::submit('Salvar') !!}
                                     </div>
                                 </div>                                
@@ -188,6 +303,8 @@
                                         {!! Form::textarea('content', $mod->content, ['class' => 'summernote']) !!}
                                     </div>
                                     <div class="form-group col-sm-12">
+                                        {!! Form::checkbox('delete', '1', false) !!}
+                                        {!! Form::label('delete', 'Apagar módulo (Irreversível)') !!}
                                         {!! Form::submit('Salvar') !!}
                                     </div>
                                 </div>

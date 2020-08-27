@@ -116,6 +116,13 @@ class TopCtaController extends Controller
     {
         $cta = Top_cta::find($id);
         //
+        if($request->has('delete')){
+            $bg_image = $cta->bg_image;
+
+            $cta->delete();
+            Storage::delete($bg_image);
+            return;
+        }
         if ($request->has('anchor')) {
             //
             $cta->anchor = $request->input('anchor');
@@ -153,12 +160,12 @@ class TopCtaController extends Controller
             $cta->cta_link = $request->input('cta_link');
         }
         if($request->has('enabled')){
-            $form->enabled = 1;
+            $cta->enabled = 1;
         }else{
-            $form->enabled = 0;
+            $cta->enabled = 0;
         }
         if($request->has('order')){
-            $form->order = $request->input('order');
+            $cta->order = $request->input('order');
         }
 
         $cta->save();

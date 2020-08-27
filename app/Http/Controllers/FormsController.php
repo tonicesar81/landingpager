@@ -145,6 +145,13 @@ class FormsController extends Controller
         //
         $form = Forms::find($id);
 
+        if($request->has('delete')){
+            
+            $form->delete();
+            
+            return;
+        }
+
         if($request->has('anchor')){
             $form->anchor = $request->input('anchor');
         }

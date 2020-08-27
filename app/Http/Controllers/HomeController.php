@@ -39,6 +39,10 @@ class HomeController extends Controller
         ->select('*',DB::raw("'feature' AS module"))
         ->get();
 
+        $top = DB::table('tops')
+        ->select('*',DB::raw("'top' AS module"))
+        ->get();
+
         foreach($features as $feature){
             $features->map(function ($feature){
                 $feats = DB::table('features')->where('feat_mods_id', $feature->id)->get();
@@ -54,9 +58,15 @@ class HomeController extends Controller
         ->select('*', DB::raw("'info' AS module"))
         ->get();
 
+        $topform = DB::table('top_forms')
+        ->select('*', DB::raw("'topform' AS module"))
+        ->get();
+
         $modules = $ctas->concat($features);
         $modules = $modules->concat($forms);
         $modules = $modules->concat($infos);
+        $modules = $modules->concat($top);
+        $modules = $modules->concat($topform);
         $modules = $modules->sortBy('order');
         return view('home', ['modules' => $modules]);
     }

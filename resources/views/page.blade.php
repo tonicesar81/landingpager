@@ -8,13 +8,19 @@
         <!-- Bootstrap CSS -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <title>Planos de Saúde Rio Total</title>
+        <title>{!! $prefs->sitename !!}</title>
     </head>
     <body>
         @foreach($modules as $page)
             @switch($page->module)
+                @case('top')
+                    @include('top')
+                @break
                 @case('cta')
                     @include('topcta')
+                @break
+                @case('topform')
+                    @include('topform')
                 @break
                 @case('feature')
                     @include('features')

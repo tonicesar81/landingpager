@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Top;
 
 class TopController extends Controller
 {
@@ -28,6 +29,7 @@ class TopController extends Controller
     public function create()
     {
         //
+        return view('admin.tops.create');
     }
 
     /**
@@ -39,6 +41,31 @@ class TopController extends Controller
     public function store(Request $request)
     {
         //
+        $top = new Top;
+        
+        if($request->has('logo')){
+            $top->logo = 1;
+        }
+        if($request->has('whats')){
+            $top->whats = 1;
+        }
+        if($request->has('sticked')){
+            $top->sticked = 1;
+        }
+        if($request->hasFile('bg_image')){
+            $top->bg_image = $request->file('bg_image')->store('tops');
+        }
+        if($request->has('bt_whats')){
+            $top->bt_whats = $request->input('bt_whats');
+        }
+        if($request->has('bg_color')){
+            $top->bg_color = $request->input('bg_color');
+        }
+        if($request->has('content')){
+            $top->content = $request->input('content');
+        }
+
+        $top->save();
     }
 
     /**
@@ -73,6 +100,47 @@ class TopController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $top = Top::find($id);
+
+        if($request->has('delete')){
+            $bg_image = $top->bg_image;
+
+            $top->delete();
+            Storage::delete($bg_image);
+            return;
+        }
+
+        if($request->has('logo')){
+            $top->logo = 1;
+        }
+        if($request->has('whats')){
+            $top->whats = 1;
+        }
+        if($request->has('sticked')){
+            $top->sticked = 1;
+        }
+        if($request->hasFile('bg_image')){
+            $top->bg_image = $request->file('bg_image')->store('tops');
+        }
+        if($request->has('bt_whats')){
+            $top->bt_whats = $request->input('bt_whats');
+        }
+        if($request->has('bg_color')){
+            $top->bg_color = $request->input('bg_color');
+        }
+        if($request->has('content')){
+            $top->content = $request->input('content');
+        }
+        if($request->has('enabled')){
+            $top->enabled = 1;
+        }else{
+            $top->enabled = 0;
+        }
+        if($request->has('order')){
+            $top->order = $request->input('order');
+        }
+
+        $top->save();
     }
 
     /**
