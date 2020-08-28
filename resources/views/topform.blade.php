@@ -35,10 +35,10 @@
                 </div>
             </div>
             @endif
-            <div class="d-flex align-items-center bd-highlight" style="height: 100vh;">
+            <div class="d-flex align-items-center bd-highlight py-5" style="">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 py-5">
                             {!! $page->content !!}
                         </div>
                         <div class="col-sm-4 p-3 rounded shadow" style="background-color:{!!$page->form_color!!}">

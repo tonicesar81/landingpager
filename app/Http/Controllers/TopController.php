@@ -112,12 +112,18 @@ class TopController extends Controller
 
         if($request->has('logo')){
             $top->logo = 1;
+        }else{
+            $top->logo = 0;
         }
         if($request->has('whats')){
             $top->whats = 1;
+        }else{
+            $top->whats = 0;
         }
         if($request->has('sticked')){
             $top->sticked = 1;
+        }else{
+            $top->sticked = 0;
         }
         if($request->hasFile('bg_image')){
             $top->bg_image = $request->file('bg_image')->store('tops');

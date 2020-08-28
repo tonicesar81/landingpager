@@ -19,8 +19,9 @@ class CreateTopsTable extends Migration
             $table->integer('whats')->nullable();
             $table->integer('sticked')->nullable();
             $table->string('bg_color')->nullable();
-            $table->binary('bg_image')->nullable();
+            $table->string('bg_image')->nullable();
             $table->text('content')->nullable();
+            $table->string('bt_whats')->nullable();
             $table->integer('enabled')->nullable();
             $table->integer('order')->nullable();
             $table->timestamps();

@@ -127,9 +127,13 @@ class TopFormsController extends Controller
         }
         if($request->has('logo')){
             $topform->logo = 1;
+        }else{
+            $topform->logo = 0;
         }
         if($request->has('whats')){
             $topform->whats = 1;
+        }else{
+            $topform->whats = 0;
         }
         if ($request->hasFile('bg_image')){
             $topform->bg_image = $request->file('bg_image')->store('topforms');
@@ -138,6 +142,8 @@ class TopFormsController extends Controller
         if ($request->has('fixed')) {
             //
             $topform->fixed = 1;
+        }else{
+            $topform->fixed = 0;
         }
         if ($request->has('bg_color')) {
             //
