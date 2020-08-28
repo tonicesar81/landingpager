@@ -35,7 +35,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                    @guest
 
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('top/create') }}">Tops</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('topcta/create') }}">CTAs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('topform/create') }}">Top Forms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('features/create') }}">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('forms/create') }}">Forms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('infos/create') }}">Infos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('prefs/create') }}">Preferências</a>
+                        </li>
+                    @endguest    
                     </ul>
 
                     <!-- Right Side Of Navbar -->

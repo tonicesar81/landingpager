@@ -81,6 +81,8 @@ class TopCtaController extends Controller
         }
 
         $cta->save();
+
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     /**
@@ -121,6 +123,7 @@ class TopCtaController extends Controller
 
             $cta->delete();
             Storage::delete($bg_image);
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
             return;
         }
         if ($request->has('anchor')) {
@@ -169,6 +172,7 @@ class TopCtaController extends Controller
         }
 
         $cta->save();
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**

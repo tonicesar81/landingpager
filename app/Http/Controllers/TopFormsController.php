@@ -78,6 +78,7 @@ class TopFormsController extends Controller
         }
 
         $topform->save();
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     /**
@@ -120,6 +121,7 @@ class TopFormsController extends Controller
             $topform->delete();
             Storage::delete($bg_image);
             return;
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
         }
 
         if($request->has('anchor')){
@@ -175,6 +177,7 @@ class TopFormsController extends Controller
         }
 
         $topform->save();
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**

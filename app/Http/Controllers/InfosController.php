@@ -61,6 +61,7 @@ class InfosController extends Controller
         }
 
         $info->save();
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     /**
@@ -102,6 +103,7 @@ class InfosController extends Controller
 
             $info->delete();
             Storage::delete($image);
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
             return;
         }
         
@@ -130,6 +132,7 @@ class InfosController extends Controller
         }
 
         $info->save();
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**

@@ -67,6 +67,7 @@ class PrefsController extends Controller
         }
 
         $prefs->save();
+        return redirect('/home')->with('message', 'Configurações efetuadas com sucesso');
     }
 
     /**

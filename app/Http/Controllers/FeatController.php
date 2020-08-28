@@ -80,6 +80,7 @@ class FeatController extends Controller
         }
 
         //return $feat->id;
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     /**
@@ -120,6 +121,7 @@ class FeatController extends Controller
 
             $feat->delete();
             
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
             return;
         }
         
@@ -192,6 +194,7 @@ class FeatController extends Controller
             
             
         }
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**

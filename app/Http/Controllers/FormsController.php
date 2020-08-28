@@ -63,6 +63,7 @@ class FormsController extends Controller
         }
 
         $form->save();
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     public function sendEmail(Request $request){
@@ -149,6 +150,7 @@ class FormsController extends Controller
             
             $form->delete();
             
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
             return;
         }
 
@@ -177,6 +179,7 @@ class FormsController extends Controller
         }
         
         $form->save();
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**

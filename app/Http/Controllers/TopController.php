@@ -66,6 +66,8 @@ class TopController extends Controller
         }
 
         $top->save();
+
+        return redirect('/home')->with('message', 'Módulo criado com sucesso');
     }
 
     /**
@@ -107,6 +109,8 @@ class TopController extends Controller
 
             $top->delete();
             Storage::delete($bg_image);
+
+            return redirect('/home')->with('message', 'Módulo excluido com sucesso');
             return;
         }
 
@@ -147,6 +151,7 @@ class TopController extends Controller
         }
 
         $top->save();
+        return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
     /**
