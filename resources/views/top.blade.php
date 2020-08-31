@@ -23,7 +23,9 @@
         </div>
         <div class="col-sm-4 text-center py-4">
             @if($page->whats == 1)
-            <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={!! $prefs->whatsapp !!}" target="_blank" role="button">{!! $page->bt_whats !!}</a>            
+            {!! Form::open(['url' => 'regwhats', 'target' => '_blank']) !!}                                                
+            {!! Form::submit($page->bt_whats, ['class' => 'btn btn-success btn-lg']) !!}                        
+            {!! Form::close() !!}            
             @endif
         </div>
         </div>

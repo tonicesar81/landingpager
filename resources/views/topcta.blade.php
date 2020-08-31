@@ -27,8 +27,9 @@
                     </div>
                     <div class="col-sm-4 text-center py-5">
                         @if($page->whats == 1)
-                        <a class="btn btn-success" href="https://api.whatsapp.com/send?phone={!! $prefs->whatsapp !!}" target="_blank" role="button">Clique aqui para falar via Whatsapp</a>
-                        
+                        {!! Form::open(['url' => 'regwhats', 'target' => '_blank']) !!}                                                
+                        {!! Form::submit('Clique aqui para falar via Whatsapp', ['class' => 'btn btn-success btn-lg']) !!}                        
+                        {!! Form::close() !!}
                         @endif
                     </div>
                 </div>

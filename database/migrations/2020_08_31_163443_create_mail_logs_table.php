@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrefsTable extends Migration
+class CreateMailLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePrefsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prefs', function (Blueprint $table) {
+        Schema::create('mail_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('sitename')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('whatsapp')->nullable();
-            $table->integer('wpp_clicks')->nullable();
+            $table->string('nome');
+            $table->string('telefone');
+            $table->string('email');
+            $table->text('mensagem');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePrefsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prefs');
+        Schema::dropIfExists('mail_logs');
     }
 }

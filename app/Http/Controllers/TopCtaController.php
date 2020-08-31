@@ -175,6 +175,8 @@ class TopCtaController extends Controller
         return redirect('/home')->with('message', 'Módulo alterado com sucesso');
     }
 
+    
+
     /**
      * Remove the specified resource from storage.
      *

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+    
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +12,7 @@
         <title>{!! $prefs->sitename !!}</title>
     </head>
     <body>
+    
         @foreach($modules as $page)
             @switch($page->module)
                 @case('top')
@@ -39,6 +41,6 @@
         @endforeach
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>       
     </body>
 </html>

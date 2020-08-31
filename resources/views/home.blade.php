@@ -13,6 +13,14 @@
                             {{ session('message') }}
                         </div>
                     @endif
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Cliques no botão Whatsapp: {{ $prefs->wpp_clicks }}
+                        </div>
+                        <div class="col-sm-4">
+                            Emails enviados: <a href="{!! url('mails') !!}">{{ $mails->count() }}</a>
+                        </div>
+                    </div>
                     @foreach($modules as $mod)
                         @switch($mod->module)
                             @case('top')

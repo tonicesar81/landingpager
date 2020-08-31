@@ -11,6 +11,7 @@ use App\Feat_mod;
 use App\Features;
 use App\Forms;
 use App\Infos;
+use App\Mail_logs;
 
 class HomeController extends Controller
 {
@@ -43,6 +44,14 @@ class HomeController extends Controller
         ->select('*',DB::raw("'top' AS module"))
         ->get();
 
+        $prefs = DB::table('prefs')
+        ->select('*')
+        ->first();
+
+        $mails = DB::table('mail_logs')
+        ->select('*')
+        ->get();
+
         foreach($features as $feature){
             $features->map(function ($feature){
                 $feats = DB::table('features')->where('feat_mods_id', $feature->id)->get();
@@ -68,6 +77,15 @@ class HomeController extends Controller
         $modules = $modules->concat($top);
         $modules = $modules->concat($topform);
         $modules = $modules->sortBy('order');
-        return view('home', ['modules' => $modules]);
+        return view('home', ['modules' => $modules, 'prefs' => $prefs, 'mails' => $mails]);
+    }
+
+    public function mails(){
+        $mail_logs = Mail_logs::all();
+        $data = [
+            'mails' => $mail_logs
+        ];
+
+        return view('admin.mails.index', $data);
     }
 }

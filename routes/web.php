@@ -22,6 +22,7 @@ Route::get('/', 'PageController@index');
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('mails', 'HomeController@mails');
 
 Route::resource('top', 'TopController');
 Route::resource('topcta', 'TopCtaController');
@@ -29,7 +30,8 @@ Route::resource('topform', 'TopFormsController');
 Route::resource('features', 'FeatController');
 Route::resource('forms', 'FormsController');
 
-Route::post('formgo', 'FormsController@sendEmail');
+Route::post('formgo', 'SendController@sendEmail');
+Route::post('regwhats', 'SendController@regClick');
 
 Route::resource('infos', 'InfosController');
 Route::resource('prefs', 'PrefsController');
